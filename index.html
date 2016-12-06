@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>A Pen by Наталья</title>
+
+
+    <link rel='stylesheet prefetch' href='https://bootswatch.com/slate/bootstrap.min.css'>
+    <link rel='stylesheet prefetch'
+          href='https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.8.5/rzslider.min.css'>
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+<div ng-app="App" ng-controller="Students">
+    <div class="col-md-4">
+        <select ng-options="item as item.label for item in items" ng-model="selectedGroup"></select>
+        <ul>
+            <li ng-repeat="student in solutions" ng-show="student.group.id == selectedGroup.id || student.group == selectedGroup.id">
+                <input class="butt" ng-click="chooseUser(student)" type="button"
+                       value="{{student.username + student.num}}"></li>
+        </ul>
+    </div>
+
+    <div class="col-md-8">
+        <select ng-options="item as item.label for item in items" data-ng-change="Add()" ng-model="activeSol.group" ng-show="activeSol.username"></select><br>
+        <br>
+        <rzslider class="ocenka" rz-slider-model="priceSlider" data-ng-click="setRating()" rz-slider-options="options"
+                  ng-show="activeSol.username"></rzslider>
+        <br>{{activeSol.rating}}<br>
+
+        <textarea class="coded" ng-model="activeSol.code"></textarea>
+        {{activeSol}}
+    </div>
+</div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.8.5/rzslider.min.js'></script>
+
+<script src="js/index.js"></script>
+
+</body>
+</html>
